@@ -1,0 +1,11 @@
+.site-wrapper {
+  text-align: center;
+
+  .booking-events {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}

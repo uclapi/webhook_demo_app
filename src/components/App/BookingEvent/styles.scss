@@ -1,0 +1,14 @@
+$grey: #222;
+
+.booking-event {
+  width: 800px;
+  margin: 5px 0;
+  display: grid;
+  grid-template-columns: 250px auto 100px;
+  grid-template-rows: 50px 60px;
+
+  @media  only screen and (max-width: 850px) {
+    width: 90vw;
+  }
+
+}
