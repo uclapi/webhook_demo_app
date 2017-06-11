@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Paper } from 'material-ui';
-import Moment from 'moment';
+import Moment from 'moment-timezone';
 
 import './BookingEvent/styles.scss';
 
@@ -10,7 +10,7 @@ class BookingEvent extends Component {
     const creationTime = new Moment(this.props.created);
     const bookingStart = new Moment(this.props.start_time);
     const bookingEnd = new Moment(this.props.end_time);
-    const bookingDay = bookingStart.format('ddd, DD/MM/YYYY');
+    const bookingDay = bookingStart.tz('Europe/London').format('ddd, DD/MM/YYYY');
     return (
       <Paper className="booking-event">
         <p>{this.props.roomname}</p>
@@ -26,7 +26,9 @@ class BookingEvent extends Component {
         <p>
           <span>{bookingDay}</span>
           <br />
-          <span>{`${bookingStart.format('HH:mm')}-${bookingEnd.format('HH:mm')}`}</span>
+          <span>
+            {`${bookingStart.tz('Europe/London').format('HH:mm')}-${bookingEnd.tz('Europe/London').format('HH:mm')}`}
+          </span>
         </p>
         <p>{this.props.contact}</p>
         <p>{creationTime.fromNow()}</p>
