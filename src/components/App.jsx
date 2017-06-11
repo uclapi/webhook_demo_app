@@ -9,7 +9,7 @@ function App() {
   const bookings = window.initialData.bookings;
   return (
     <div className="site-wrapper">
-      <h1>Room Bookings Live</h1>
+      <h1><strong>Room Bookings Live</strong></h1>
       <div className="booking-events">
         {bookings
           .sort((a, b) => {
