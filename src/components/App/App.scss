@@ -8,4 +8,12 @@
     text-align: center;
     align-items: center;
   }
+  .newBooking-enter {
+    opacity: 0.01;
+
+    .newBooking-enter-active {
+      opacity: 1;
+      transition: opacity 500ms ease-in;
+    }
+  }
 }

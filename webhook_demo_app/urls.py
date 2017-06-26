@@ -19,4 +19,5 @@ from core.views import uclapi_webhook, index
 urlpatterns = [
     url(r'^$', index),
     url(r'^webhook/', uclapi_webhook),
+    # url(r'^test/', test_message)
 ]

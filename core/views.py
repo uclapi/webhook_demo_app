@@ -4,6 +4,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import BookingEvent, History
+# from .consumers import send_test_message
 
 # Create your views here.
 
@@ -32,12 +33,11 @@ def uclapi_webhook(request):
             )
             new_booking.save()
 
-    booking_events_to_keep = BookingEvent.objects.all().order_by(
+    bookings_to_delete = BookingEvent.objects.all().order_by(
         '-created'
-    )[:100]
-    BookingEvent.objects.exclude(
-        pk__in=booking_events_to_keep
-    ).delete()
+    )[100:]
+    for booking in bookings_to_delete:
+        booking.delete()
 
     return JsonResponse({
         "ok": True
@@ -68,5 +68,8 @@ def index(request):
         })
     })
 
-def incoming_websocket(request):
-    pass
+# def test_message(request):
+#     send_test_message()
+#     return JsonResponse({
+#         "ok": True
+#     })
