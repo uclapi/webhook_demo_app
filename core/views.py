@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
+import os
 
 from .models import BookingEvent, History
 # from .consumers import send_test_message
@@ -11,7 +12,25 @@ from .models import BookingEvent, History
 
 @csrf_exempt
 def uclapi_webhook(request):
-    events = json.loads(request.body.decode('utf-8'))
+    arrived_hook_content = json.loads(request.body.decode('utf-8'))
+
+    if not (
+        arrived_hook_content["verification_secret"] ==
+        os.environ["UCLAPI_WEBHOOK_VERIFICATION_SECRET"]
+    ):
+        response = JsonResponse({
+            "ok": False,
+            "error": "Invalid verification secret."
+        })
+        response.status_code = 400
+        return response
+
+    if arrived_hook_content["type"] == "challenge":
+        return JsonResponse({
+            "challenge": arrived_hook_content["challenge"]
+        })
+
+    events = arrived_hook_content["content"]
 
     new_history_item = History()
     new_history_item.setEventData(events)
