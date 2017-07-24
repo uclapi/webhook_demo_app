@@ -9,6 +9,7 @@ click==6.7
 constantly==15.1.0
 daphne==1.2.0
 Django==1.11.2
+gunicorn==19.7.1
 hyperlink==17.1.1
 incremental==17.5.0
 msgpack-python==0.4.8
