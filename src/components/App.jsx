@@ -23,7 +23,9 @@ class App extends React.Component {
   }
 
   startWSConnection() {
-    const socket = new WebSocket(`ws://${window.location.host}`);
+    const isLocal = (location.hostname === 'localhost' || location.hostname === '127.0.0.1');
+
+    const socket = isLocal ? new WebSocket(`ws://${window.location.host}`) : new WebSocket(`wss://${window.location.host}`);
     socket.addEventListener('open', () => {
       this.setState({ webhookReadyState: socket.readyState });
     });
