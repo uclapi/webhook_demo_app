@@ -152,6 +152,3 @@ OPBEAT = {
     'APP_ID': os.environ["OPBEAT_APP_ID"],
     'SECRET_TOKEN': os.environ["OPBEAT_SECRET_TOKEN"],
 }
-
-# Whitenoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
