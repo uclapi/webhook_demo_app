@@ -16,6 +16,7 @@ hyperlink==17.1.1
 incremental==17.5.0
 msgpack-python==0.4.8
 opbeat==3.5.2
+psycopg2==2.7.3
 python-dotenv==0.6.4
 pytz==2017.2
 redis==2.10.5
