@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,9 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'channels',
+    'opbeat.contrib.django',
 ]
 
 MIDDLEWARE = [
+    'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -84,6 +87,11 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+if not DEBUG:
+    DATABASES['default'] = dj_database_url.parse(
+        os.environ.get("DATABASE_URL")
+    )
 
 
 # Password validation
@@ -134,4 +142,12 @@ CHANNEL_LAYERS = {
         },
         "ROUTING": "webhook_demo_app.routing.channel_routing",
     },
+}
+
+
+# Opbeat
+OPBEAT = {
+    'ORGANIZATION_ID': os.environ["OPBEAT_ORGANIZATION_ID"],
+    'APP_ID': os.environ["OPBEAT_APP_ID"],
+    'SECRET_TOKEN': os.environ["OPBEAT_SECRET_TOKEN"],
 }
