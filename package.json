@@ -30,8 +30,7 @@
     "react-fontawesome": "^1.6.1",
     "react-hot-loader": "next",
     "react-tap-event-plugin": "^2.0.1",
-    "react-transition-group": "1.x",
-    "webpack": "^2.5.1"
+    "react-transition-group": "1.x"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -60,7 +59,8 @@
     "offline-plugin": "^4.7.0",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.17.0",
-    "url-loader": "^0.5.8"
+    "url-loader": "^0.5.8",
+    "webpack": "^2.5.1"
   },
   "engines": {
     "node": "7.8.x"
