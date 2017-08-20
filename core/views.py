@@ -25,7 +25,10 @@ def uclapi_webhook(request):
         response.status_code = 400
         return response
 
-    if arrived_hook_content["type"] == "challenge":
+    if (
+        arrived_hook_content["service"] == "webhook" and
+        arrived_hook_content["name"] == "challenge"
+    ):
         return JsonResponse({
             "challenge": arrived_hook_content["challenge"]
         })
