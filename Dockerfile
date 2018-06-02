@@ -33,6 +33,9 @@ RUN npm run docker-build
 RUN apk add postgresql-libs && \
     apk add --virtual .build-deps gcc musl-dev postgresql-dev
 
+# Remove conflicting dotenv packages
+RUN pip uninstall dotenv django-dotenv python-dotenv
+
 # Install the requirements components
 RUN pip install -r requirements.txt
 
