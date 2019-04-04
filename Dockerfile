@@ -20,7 +20,6 @@ RUN apk add --no-cache tzdata && \
 
 # Copy everything to the image
 COPY . .
-WORKDIR src/
 
 # Install the frontend build components
 RUN npm install
