@@ -11,3 +11,4 @@ View the live version here: https://live-roombookings.uclapi.com/
 - Create a new python virtual environment and install python dependencies by running `pip install -r requirements.txt`
 - Apply migrations with `python manage.py migrate`
 - Run the server with `python manage.py runserver`
+
