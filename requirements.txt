@@ -25,4 +25,4 @@ Twisted==19.7.0
 txaio==2.8.0
 urllib3==1.22
 whitenoise==3.3.0
-zope.interface==4.4.1
+zope.interface==5.1.0
